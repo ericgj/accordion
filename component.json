@@ -1,0 +1,27 @@
+{
+  "name": "accordion",
+  "repo": "ericgj/accordion",
+  "description": "Basic (vertical) accordion component",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "mikeric/rivets": "*",
+    "component/emitter": "*",
+    "timoxley/react": "*",
+    "component/domify": "*",
+    "component/classes": "*",
+    "component/css": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "rivets-shim.js",
+    "view.js",
+    "model.js",
+    "template.js"
+  ],
+  "main": "model.js",
+  "styles": [
+    "accordion.css"
+  ]
+}
