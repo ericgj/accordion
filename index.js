@@ -56,7 +56,7 @@ Accordion.prototype._deselect = function(panel){
 
 
 function Panel(container,el) {
-  if (!(this instanceof Panel)) return new Panel(el);
+  if (!(this instanceof Panel)) return new Panel(container,el);
   
   this.container = container;
   this.el = el;
