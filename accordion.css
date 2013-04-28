@@ -1,0 +1,15 @@
+
+.accordion .entry-title {
+  display: block;
+  cursor: pointer;
+}
+
+.accordion .entry-content {
+  display: none;
+}
+
+.accordion .selected .entry-content {
+  display: block;
+}
+
+

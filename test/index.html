@@ -1,0 +1,51 @@
+<!DOCTYPE 5>
+<html>
+  <head>
+    <title>Accordion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="../build/build.css" />
+    <style>
+
+      .accordion {
+        width: 600px;
+      }
+
+      .accordion .entry-title, .entry-content {
+        border: 1px solid gray;
+        padding: 5px 8px;
+        margin: -1px;
+      }
+
+      .accordion .entry-title {
+        background-color: lightgray;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Accordion</h1>
+    <div id="accordion1">
+      <article class="hentry">
+        <header>
+          <h2 class="entry-title">The title of the article</h2>
+        </header>
+        <div class="entry-content">
+          <p>Contents</p>
+        </div>
+      </article>
+      <article class="hentry">
+        <header>
+          <h2 class="entry-title">Second article</h2>
+        </header>
+        <div class="entry-content">
+          <p>Something else</p>
+        </div>
+      </article>
+    </div>
+    <script src="../build/build.js"></script>
+    <script>
+      var Accordion = require('accordion');
+      var accordion = Accordion('#accordion1');
+    </script>
+  </body>
+</html>
