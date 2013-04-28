@@ -1,23 +1,21 @@
 var classes = require('classes')
-  , Emitter = require('emitter');
-
-var noop        = function() { }
-  , deselectAll = function() { this.deselectAll() }
-  , deselect    = function(panel) { this._deselect(panel) };
+  , Emitter = require('emitter')
+  , noop    = function() { };
 
 module.exports = Accordion;
 
-defaultBehavior = {
-  onSelect: deselectAll,
-  onReselect: deselect
+defaults = {
+  deselect:    true,
+  multiselect: false
 };
 
 function Accordion(el,options) {
   if (!(this instanceof Accordion)) return new Accordion(el,options);
 
-  options = merge(defaultBehavior, options || {}),
-    this.selectBehavior = options.onSelect,
-    this.reselectBehavior = options.onReselect;
+  options = merge(defaults, options || {})
+
+  this.selectBehavior   = (options.multiselect ? noop : this.deselectAll);
+  this.reselectBehavior = (options.deselect ? this._deselect : noop);
   this.panels = [];
   this.el = el;
   this.on('select', this._select.bind(this));

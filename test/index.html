@@ -192,8 +192,8 @@
     <script>
       var Accordion = require('accordion');
       Accordion('#accordion1');
-      Accordion('#accordion2', { onSelect: function(){} });
-      Accordion('#accordion3', { onReselect: function(){} });
+      Accordion('#accordion2', { multiselect: true } );
+      Accordion('#accordion3', { deselect: false });
     </script>
   </body>
 </html>
