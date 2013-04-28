@@ -5,6 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../build/build.css" />
     <style>
+      
+      body { 
+        padding: 60px; 
+        font: 300 14px "Helvetica Neue", Helvetica, Arial;
+        min-height: 1000px;
+      }
+
+      body > h2 {
+        border-top: 1px solid gray;
+        margin-top: 30px;
+      }
 
       .accordion {
         width: 600px;
@@ -24,28 +35,165 @@
   </head>
   <body>
     <h1>Accordion</h1>
+    <h2>Default behavior: deselectable, and single select</h2>
     <div id="accordion1">
       <article class="hentry">
         <header>
-          <h2 class="entry-title">The title of the article</h2>
+          <h3 class="entry-title">Lincoln's second inaugural</h2>
         </header>
         <div class="entry-content">
-          <p>Contents</p>
+          <p>Fondly do we hope--fervently do we pray--that this mighty scourge 
+          of war may speedily pass away. Yet, if God wills that it continue, 
+          until all the wealth piled by the bond-man's two hundred and fifty 
+          years of unrequited toil shall be sunk, and until every drop of blood 
+          drawn with the lash, shall be paid by another drawn with the sword, as 
+          was said three thousand years ago, so still it must be said "the 
+          judgments of the Lord, are true and righteous altogether."</p>
         </div>
       </article>
       <article class="hentry">
         <header>
-          <h2 class="entry-title">Second article</h2>
+          <h3 class="entry-title">The Gettysburg Address</h2>
         </header>
         <div class="entry-content">
-          <p>Something else</p>
+          <p>Four score and seven years ago, our fathers brought forth on this 
+          continent a new nation: conceived in liberty, and dedicated to the 
+          proposition that all men are created equal.</p>
+
+          <p>Now we are engaged in a great civil war. . .testing whether that 
+          nation, or any nation so conceived and so dedicated. . . can long 
+          endure. We are met on a great battlefield of that war. </p>
+
+          <p>We have come to dedicate a portion of that field as a final resting 
+          place for those who here gave their lives that that nation might live. 
+          It is altogether fitting and proper that we should do this.</p> 
+
+          <p>But, in a larger sense, we cannot dedicate. . .we cannot consecrate
+          . . . we cannot hallow this ground. The brave men, living and dead, 
+          who struggled here have consecrated it, far above our poor power to 
+          add or detract. The world will little note, nor long remember, what we 
+          say here, but it can never forget what they did here. It is for us the 
+          living, rather, to be dedicated here to the unfinished work which they 
+          who fought here have thus far so nobly advanced. </p>
+
+          <p>It is rather for us to be here dedicated to the great task 
+          remaining before us. . .that from these honored dead we take increased 
+          devotion to that cause for which they gave the last full measure of 
+          devotion. . . that we here highly resolve that these dead shall not 
+          have died in vain. . . that this nation, under God, shall have a new 
+          birth of freedom. . . and that government of the people. . .by the 
+          people. . .for the people. . . shall not perish from the earth.</p>
         </div>
       </article>
     </div>
-    <script src="../build/build.js"></script>
+    <h2>Deselectable, and multi select</h2>
+    <div id="accordion2">
+      <article class="hentry">
+        <header>
+          <h3 class="entry-title">Lincoln's second inaugural</h2>
+        </header>
+        <div class="entry-content">
+          <p>Fondly do we hope--fervently do we pray--that this mighty scourge 
+          of war may speedily pass away. Yet, if God wills that it continue, 
+          until all the wealth piled by the bond-man's two hundred and fifty 
+          years of unrequited toil shall be sunk, and until every drop of blood 
+          drawn with the lash, shall be paid by another drawn with the sword, as 
+          was said three thousand years ago, so still it must be said "the 
+          judgments of the Lord, are true and righteous altogether."</p>
+        </div>
+      </article>
+      <article class="hentry">
+        <header>
+          <h3 class="entry-title">The Gettysburg Address</h2>
+        </header>
+        <div class="entry-content">
+          <p>Four score and seven years ago, our fathers brought forth on this 
+          continent a new nation: conceived in liberty, and dedicated to the 
+          proposition that all men are created equal.</p>
+
+          <p>Now we are engaged in a great civil war. . .testing whether that 
+          nation, or any nation so conceived and so dedicated. . . can long 
+          endure. We are met on a great battlefield of that war. </p>
+
+          <p>We have come to dedicate a portion of that field as a final resting 
+          place for those who here gave their lives that that nation might live. 
+          It is altogether fitting and proper that we should do this.</p> 
+
+          <p>But, in a larger sense, we cannot dedicate. . .we cannot consecrate
+          . . . we cannot hallow this ground. The brave men, living and dead, 
+          who struggled here have consecrated it, far above our poor power to 
+          add or detract. The world will little note, nor long remember, what we 
+          say here, but it can never forget what they did here. It is for us the 
+          living, rather, to be dedicated here to the unfinished work which they 
+          who fought here have thus far so nobly advanced. </p>
+
+          <p>It is rather for us to be here dedicated to the great task 
+          remaining before us. . .that from these honored dead we take increased 
+          devotion to that cause for which they gave the last full measure of 
+          devotion. . . that we here highly resolve that these dead shall not 
+          have died in vain. . . that this nation, under God, shall have a new 
+          birth of freedom. . . and that government of the people. . .by the 
+          people. . .for the people. . . shall not perish from the earth.</p>
+        </div>
+      </article>
+   </div>
+   <h2>Not deselectable, and single select</h2>
+   <div id="accordion3">
+      <article class="hentry">
+        <header>
+          <h3 class="entry-title">Lincoln's second inaugural</h2>
+        </header>
+        <div class="entry-content">
+          <p>Fondly do we hope--fervently do we pray--that this mighty scourge 
+          of war may speedily pass away. Yet, if God wills that it continue, 
+          until all the wealth piled by the bond-man's two hundred and fifty 
+          years of unrequited toil shall be sunk, and until every drop of blood 
+          drawn with the lash, shall be paid by another drawn with the sword, as 
+          was said three thousand years ago, so still it must be said "the 
+          judgments of the Lord, are true and righteous altogether."</p>
+        </div>
+      </article>
+      <article class="hentry">
+        <header>
+          <h3 class="entry-title">The Gettysburg Address</h2>
+        </header>
+        <div class="entry-content">
+          <p>Four score and seven years ago, our fathers brought forth on this 
+          continent a new nation: conceived in liberty, and dedicated to the 
+          proposition that all men are created equal.</p>
+
+          <p>Now we are engaged in a great civil war. . .testing whether that 
+          nation, or any nation so conceived and so dedicated. . . can long 
+          endure. We are met on a great battlefield of that war. </p>
+
+          <p>We have come to dedicate a portion of that field as a final resting 
+          place for those who here gave their lives that that nation might live. 
+          It is altogether fitting and proper that we should do this.</p> 
+
+          <p>But, in a larger sense, we cannot dedicate. . .we cannot consecrate
+          . . . we cannot hallow this ground. The brave men, living and dead, 
+          who struggled here have consecrated it, far above our poor power to 
+          add or detract. The world will little note, nor long remember, what we 
+          say here, but it can never forget what they did here. It is for us the 
+          living, rather, to be dedicated here to the unfinished work which they 
+          who fought here have thus far so nobly advanced. </p>
+
+          <p>It is rather for us to be here dedicated to the great task 
+          remaining before us. . .that from these honored dead we take increased 
+          devotion to that cause for which they gave the last full measure of 
+          devotion. . . that we here highly resolve that these dead shall not 
+          have died in vain. . . that this nation, under God, shall have a new 
+          birth of freedom. . . and that government of the people. . .by the 
+          people. . .for the people. . . shall not perish from the earth.</p>
+        </div>
+      </article>
+  </div>
+  <script src="../build/build.js"></script>
     <script>
       var Accordion = require('accordion');
-      var accordion = Accordion('#accordion1');
+      Accordion('#accordion1');
+      Accordion('#accordion2', { onSelect: function(){} });
+      Accordion('#accordion3', { onReselect: function(){} });
     </script>
   </body>
 </html>

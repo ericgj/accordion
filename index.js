@@ -1,11 +1,23 @@
 var classes = require('classes')
-  , Emitter = require('emitter')
+  , Emitter = require('emitter');
+
+var noop        = function() { }
+  , deselectAll = function() { this.deselectAll() }
+  , deselect    = function(panel) { this._deselect(panel) };
 
 module.exports = Accordion;
 
-function Accordion(el) {
-  if (!(this instanceof Accordion)) return new Accordion(el);
+defaultBehavior = {
+  onSelect: deselectAll,
+  onReselect: deselect
+};
 
+function Accordion(el,options) {
+  if (!(this instanceof Accordion)) return new Accordion(el,options);
+
+  options = merge(defaultBehavior, options || {}),
+    this.selectBehavior = options.onSelect,
+    this.reselectBehavior = options.onReselect;
   this.panels = [];
   this.el = el;
   this.on('select', this._select.bind(this));
@@ -36,10 +48,12 @@ Accordion.prototype.deselectAll = function(){
 
 Accordion.prototype._select = function(panel){
   classes(panel.el).add('selected');
+  panel.selected = true;
 }
 
 Accordion.prototype._deselect = function(panel){
   classes(panel.el).remove('selected');
+  panel.selected = false;
 }
 
 
@@ -60,15 +74,32 @@ Panel.prototype.bind = function(el){
 
 Panel.prototype.select = function(){
   if (this.selected){
-    // TODO this.container.collapseBehavior(this);
-    this.deselect();
+    this.container.reselectBehavior(this);
   } else {
-    this.selected = true;
+    this.container.selectBehavior(this);
     this.container.emit('select', this);
   }
 }
 
 Panel.prototype.deselect = function(){
-  this.selected = false;
   this.container.emit('deselect', this);
 }
+
+
+var has = Object.prototype.hasOwnProperty;
+
+var mergeInto = function(a,b){
+  for (var key in b) {
+    if (has.call(b,key)){
+      a[key] = b[key];
+    }
+  }
+  return a;
+}
+
+// non-mutating merge
+var merge = function(a,b){
+  var m = mergeInto({},a);
+  return mergeInto(m,b);
+}
+
