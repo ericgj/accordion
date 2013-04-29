@@ -15,11 +15,9 @@ function Accordion(el,options) {
   options = merge(defaults, options || {})
 
   this.selectBehavior   = (options.multiselect ? noop : this.deselectAll);
-  this.reselectBehavior = (options.deselect ? this._deselect : noop);
+  this.reselectBehavior = (options.deselect ? this.deselect : noop);
   this.panels = [];
   this.el = el;
-  this.on('select', this._select.bind(this));
-  this.on('deselect', this._deselect.bind(this));
   if (el) this.bind(el);
   this.deselectAll();
   return this;
@@ -39,19 +37,26 @@ Accordion.prototype.bind = function(el){
 
 Accordion.prototype.deselectAll = function(){
   for (i=0;i<this.panels.length;++i) {
-    this._deselect(this.panels[i])
+    this.deselect(this.panels[i])
   }
   return this;
 }
 
-Accordion.prototype._select = function(panel){
-  classes(panel.el).add('selected');
-  panel.selected = true;
+Accordion.prototype.select = function(panel){
+  if (panel.selected){
+    this.reselectBehavior(panel);
+  } else {
+    this.selectBehavior(panel);
+    classes(panel.el).add('selected');
+    panel.selected = true;
+    this.emit('select',panel);
+  }
 }
 
-Accordion.prototype._deselect = function(panel){
+Accordion.prototype.deselect = function(panel){
   classes(panel.el).remove('selected');
   panel.selected = false;
+  this.emit('deselect', panel);
 }
 
 
@@ -66,23 +71,12 @@ function Panel(container,el) {
 }
 
 Panel.prototype.bind = function(el){
-  title = el.querySelector('.entry-title');
-  title.onclick = this.select.bind(this);
+  var title = el.querySelector('.entry-title');
+  var self = this;
+  title.onclick = function(){ self.container.select(self) };
 }
 
-Panel.prototype.select = function(){
-  if (this.selected){
-    this.container.reselectBehavior(this);
-  } else {
-    this.container.selectBehavior(this);
-    this.container.emit('select', this);
-  }
-}
-
-Panel.prototype.deselect = function(){
-  this.container.emit('deselect', this);
-}
-
+// private
 
 var has = Object.prototype.hasOwnProperty;
 
