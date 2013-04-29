@@ -24,7 +24,7 @@
 
   It makes the following assumptions about the markup:
   
-  1. The given element contains one or more [hAtom][1] entries. That is,
+  1. The given element contains one or more [hAtom][hatom] entries. That is,
   `div` or `article` elements matched by `.hentry`.
 
   2. Each entry has an `.entry-title` element (again following hAtom),
@@ -59,5 +59,5 @@
   MIT
 
 
-[1]: http://microformats.org/wiki/hatom  hAtom Microformat Spec
+[hatom]: http://microformats.org/wiki/hatom  "hAtom Microformat Spec"
 
