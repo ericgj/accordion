@@ -57,3 +57,7 @@
 ## License
 
   MIT
+
+
+[1]: http://microformats.org/wiki/hatom  hAtom Microformat Spec
+
