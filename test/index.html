@@ -139,7 +139,7 @@
    </div>
    <h2>Not deselectable, and single select</h2>
    <div id="accordion3">
-      <article class="hentry">
+      <article class="foo">
         <header>
           <h3 class="entry-title"><span class="caret"></span>Lincoln's second inaugural</h3>
         </header>
@@ -153,7 +153,7 @@
           judgments of the Lord, are true and righteous altogether."</p>
         </div>
       </article>
-      <article class="hentry">
+      <article class="foo">
         <header>
           <h3 class="entry-title"><span class="caret"></span>The Gettysburg Address</h3>
         </header>
@@ -193,7 +193,7 @@
       var Accordion = require('accordion');
       Accordion('#accordion1');
       Accordion('#accordion2', { multiselect: true } );
-      Accordion('#accordion3', { deselect: false });
+      Accordion('#accordion3', { deselect: false, entry: '.foo' });
     </script>
   </body>
 </html>
