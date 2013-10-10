@@ -6,7 +6,8 @@ module.exports = Accordion;
 
 defaults = {
   deselect:    true,
-  multiselect: false
+  multiselect: false,
+  entry:       '.hentry'
 };
 
 function Accordion(el,options) {
@@ -16,6 +17,7 @@ function Accordion(el,options) {
 
   this.selectBehavior   = (options.multiselect ? noop : this.deselectAll);
   this.reselectBehavior = (options.deselect ? this.deselect : noop);
+  this.entrySelector = options.entry;
   this.panels = [];
   this.el = el;
   if (el) this.bind(el);
@@ -27,7 +29,7 @@ Accordion.prototype = new Emitter;
 
 Accordion.prototype.bind = function(el){
   if (typeof el=='string') el = document.querySelector(el);
-  items = el.querySelectorAll('.hentry');
+  items = el.querySelectorAll(this.entrySelector);
   for (i=0;i<items.length;++i) {
     this.panels.push(new Panel(this, items[i]));
   }
