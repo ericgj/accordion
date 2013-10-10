@@ -27,8 +27,8 @@ Accordion.prototype = new Emitter;
 
 Accordion.prototype.bind = function(el){
   if (typeof el=='string') el = document.querySelector(el);
-  items = el.querySelectorAll('.hentry');
-  for (i=0;i<items.length;++i) {
+  var items = el.querySelectorAll('.hentry');
+  for (var i=0;i<items.length;++i) {
     this.panels.push(new Panel(this, items[i]));
   }
   classes(el).add('accordion');
@@ -36,7 +36,7 @@ Accordion.prototype.bind = function(el){
 }
 
 Accordion.prototype.deselectAll = function(){
-  for (i=0;i<this.panels.length;++i) {
+  for (var i=0;i<this.panels.length;++i) {
     this.deselect(this.panels[i])
   }
   return this;
