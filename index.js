@@ -4,7 +4,7 @@ var classes = require('classes')
 
 module.exports = Accordion;
 
-defaults = {
+var defaults = {
   deselect:    true,
   multiselect: false
 };
@@ -62,7 +62,7 @@ Accordion.prototype.deselect = function(panel){
 
 function Panel(container,el) {
   if (!(this instanceof Panel)) return new Panel(container,el);
-  
+
   this.container = container;
   this.el = el;
   this.selected = false;
