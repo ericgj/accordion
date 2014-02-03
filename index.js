@@ -7,9 +7,10 @@ var classes = require('classes')
 module.exports = Accordion;
 
 var defaults = {
-  deselect:    true,
-  multiselect: false,
-  entry:       '.hentry'
+  deselect:     true,
+  multiselect:  false,
+  entry:        '.hentry',
+  title:        '.entry-title'
 };
 
 function Accordion(el,options) {
@@ -20,6 +21,7 @@ function Accordion(el,options) {
   this.selectBehavior   = (options.multiselect ? noop : this.deselectAll);
   this.reselectBehavior = (options.deselect ? this.deselect : noop);
   this.entrySelector = options.entry;
+  this.entryTitle = options.title;
   this.panels = [];
   this.el = el;
   if (el) this.bind(el);
@@ -75,8 +77,8 @@ function Panel(container,el) {
 }
 
 Panel.prototype.bind = function(el){
-  var title = el.querySelector('.entry-title');
   var self = this;
+  var title = el.querySelector(self.container.entryTitle);
   title.onclick = function(){ self.container.select(self) };
 }
 
