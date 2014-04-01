@@ -63,7 +63,7 @@
 ## API
 
   __Please note that the API has changed quite a bit from earlier 0.0.x 
-  versions. The old version can be found on the `original` git tag.__
+  versions. The old version can be found on the `original` git branch.__
   
 ### Accordion()
 
