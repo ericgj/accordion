@@ -1,8 +1,8 @@
 {
   "name": "accordion",
   "repo": "ericgj/accordion",
-  "description": "Basic (vertical) accordion component",
-  "version": "0.0.3",
+  "description": "Simple (vertical) accordion UI component",
+  "version": "0.1.1",
   "keywords": [],
   "dependencies": {
     "component/emitter": "*",
@@ -10,6 +10,7 @@
   },
   "development": {},
   "license": "MIT",
+  "main": "index.js",
   "scripts": [
     "index.js"
   ],

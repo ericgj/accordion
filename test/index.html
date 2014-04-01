@@ -21,7 +21,7 @@
         width: 600px;
       }
 
-      .accordion .entry-title, .entry-content {
+      .accordion .entry-title, .accordion .entry-content {
         border: 1px solid gray;
         padding: 5px 8px;
         margin: -1px;
@@ -36,7 +36,7 @@
   <body>
     <h1>Accordion</h1>
     <h2>Default behavior: deselectable, and single select</h2>
-    <div id="accordion1">
+    <div id="accordion1" class="accordion">
       <article class="hentry">
         <header>
           <h3 class="entry-title"><span class="caret"></span>Lincoln's second inaugural</h3>
@@ -87,7 +87,7 @@
       </article>
     </div>
     <h2>Deselectable, and multi select</h2>
-    <div id="accordion2">
+    <div id="accordion2" class="accordion">
       <article class="hentry">
         <header>
           <h3 class="entry-title"><span class="caret"></span>Lincoln's second inaugural</h3>
@@ -138,8 +138,8 @@
       </article>
    </div>
    <h2>Not deselectable, and single select</h2>
-   <div id="accordion3">
-      <article class="foo">
+   <div id="accordion3" class="accordion">
+      <article class="hentry">
         <header>
           <h3 class="entry-title"><span class="caret"></span>Lincoln's second inaugural</h3>
         </header>
@@ -153,7 +153,7 @@
           judgments of the Lord, are true and righteous altogether."</p>
         </div>
       </article>
-      <article class="foo">
+      <article class="hentry">
         <header>
           <h3 class="entry-title"><span class="caret"></span>The Gettysburg Address</h3>
         </header>
@@ -188,12 +188,90 @@
         </div>
       </article>
   </div>
+  <div id="accordion4">
+    <h1>Accordion from outline</h1>
+    <p>This is an example of an accordion that alters the document structure
+    based on the headers (h1,h2,h3 etc.) as section hierarchy.</p>
+    <h2>One fine speech</h2>
+    <p>The accordion in this case applies to everything H3 and below.</p>
+    <p>Any H1 or H2 sections are not accordion-ified.</p>
+    <h3>The Gettysburg Address</h3>
+    <p>Four score and seven years ago, our fathers brought forth on this 
+    continent a new nation: conceived in liberty, and dedicated to the 
+    proposition that all men are created equal.</p>
+
+    <p>Now we are engaged in a great civil war. . .testing whether that 
+    nation, or any nation so conceived and so dedicated. . . can long 
+    endure. We are met on a great battlefield of that war. </p>
+
+    <p>We have come to dedicate a portion of that field as a final resting 
+    place for those who here gave their lives that that nation might live. 
+    It is altogether fitting and proper that we should do this.</p> 
+
+    <p>But, in a larger sense, we cannot dedicate. . .we cannot consecrate
+    . . . we cannot hallow this ground. The brave men, living and dead, 
+    who struggled here have consecrated it, far above our poor power to 
+    add or detract. The world will little note, nor long remember, what we 
+    say here, but it can never forget what they did here. It is for us the 
+    living, rather, to be dedicated here to the unfinished work which they 
+    who fought here have thus far so nobly advanced. </p>
+
+    <p>It is rather for us to be here dedicated to the great task 
+    remaining before us. . .that from these honored dead we take increased 
+    devotion to that cause for which they gave the last full measure of 
+    devotion. . . that we here highly resolve that these dead shall not 
+    have died in vain. . . that this nation, under God, shall have a new 
+    birth of freedom. . . and that government of the people. . .by the 
+    people. . .for the people. . . shall not perish from the earth.</p>
+ 
+    <h2>Another</h2>
+    <h3>Lincoln's second inaugural</h3>
+    <p>Fondly do we hope--fervently do we pray--that this mighty scourge 
+    of war may speedily pass away. Yet, if God wills that it continue, 
+    until all the wealth piled by the bond-man's two hundred and fifty 
+    years of unrequited toil shall be sunk, and until every drop of blood 
+    drawn with the lash, shall be paid by another drawn with the sword, as 
+    was said three thousand years ago, so still it must be said "the 
+    judgments of the Lord, are true and righteous altogether."</p>
+
+  </div>
+
   <script src="../build/build.js"></script>
     <script>
       var Accordion = require('accordion');
-      Accordion('#accordion1');
-      Accordion('#accordion2', { multiselect: true } );
-      Accordion('#accordion3', { deselect: false, entry: '.foo' });
+      
+      var a1 = Accordion()('#accordion1');
+
+      var a2 = 
+        Accordion()
+          .multiselectable(true)('#accordion2')
+      
+      var a3 = 
+        Accordion()
+          .deselectable(false)('#accordion3')
+
+      var a4 = 
+        Accordion()
+          .hlevel(3)('#accordion4');
+
+      a1.on('select', accordionScroll);
+      a2.on('select', accordionScroll);
+      a3.on('select', accordionScroll);
+      a4.on('select', accordionScroll);
+ 
+      a1.select(0);
+      a1.select(1); 
+      a1.click(0);
+      a1.click(1);
+
+      a2.click(1);
+      a2.deselect(1);
+
+      // doesnt quite work since display:none repaint occurs after
+      function accordionScroll(el,i,e){
+        if (e) window.scrollTo(0, e.pageY - 20);
+      }
+
     </script>
   </body>
 </html>
