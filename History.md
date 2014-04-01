@@ -1,13 +1,15 @@
 
 # Release history
 
-## 0.1.1  1 Apr 2014
+## 0.1.2  1 Apr 2014
 
 Reimplement in a functional style, new API
 
 Remove unnecessary el wrapping and other cruftiness
 
 Add option to actively convert underlying document structure
+
+Add shim for old-style constructor
 
 Remove support for optional classnames, at least for now
 

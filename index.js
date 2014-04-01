@@ -25,6 +25,11 @@ module.exports = Accordion;
  *
  */
 function Accordion(){
+  if (arguments.length > 0){
+    var args = []; for (var i=0;i<arguments.length;++i) args.push(arguments[i]);
+    return shim.apply(null,args);
+  }
+  
   var opts = {
     multiselectable: false,
     deselectable:    true,
@@ -151,6 +156,30 @@ function Panels(){
 
   return panels;
 }
+
+
+// shim for old-style constructor
+
+function shim(el,options){
+  console.warn(
+    'Accordion constructor arguments may be deprecated by v0.2.x. ' +
+    'Please refer to the new API.'
+  );
+  
+  var opts = {
+    multiselectable: options.multiselectable || options.multiselect,
+    deselectable: options.deselectable || options.deselect,
+    hlevel: options.hlevel
+  }
+
+  var accordion = Accordion();
+  for (var k in opts){
+    if (!(opts[k] == undefined)) accordion = accordion[k](opts[k]);
+  }
+
+  return accordion(el);
+}
+
 
 
 // utils

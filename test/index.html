@@ -246,9 +246,8 @@
         Accordion()
           .multiselectable(true)('#accordion2')
       
-      var a3 = 
-        Accordion()
-          .deselectable(false)('#accordion3')
+      // old constructor
+      var a3 = Accordion('#accordion3', {deselect: false}); 
 
       var a4 = 
         Accordion()
